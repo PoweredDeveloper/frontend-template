@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# React TS Front-End template
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -17,57 +17,123 @@ If you are developing a production application, we recommend updating the config
 
 ```js
 export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+	globalIgnores(["dist"]),
+	{
+		files: ["**/*.{ts,tsx}"],
+		extends: [
+			// Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+			// Remove tseslint.configs.recommended and replace with this
+			tseslint.configs.recommendedTypeChecked,
+			// Alternatively, use this for stricter rules
+			tseslint.configs.strictTypeChecked,
+			// Optionally, add this for stylistic rules
+			tseslint.configs.stylisticTypeChecked
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+			// Other configs...
+		],
+		languageOptions: {
+			parserOptions: {
+				project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+				tsconfigRootDir: import.meta.dirname
+			}
+			// other options...
+		}
+	}
+]);
 ```
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+import reactX from "eslint-plugin-react-x";
+import reactDom from "eslint-plugin-react-dom";
 
 export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+	globalIgnores(["dist"]),
+	{
+		files: ["**/*.{ts,tsx}"],
+		extends: [
+			// Other configs...
+			// Enable lint rules for React
+			reactX.configs["recommended-typescript"],
+			// Enable lint rules for React DOM
+			reactDom.configs.recommended
+		],
+		languageOptions: {
+			parserOptions: {
+				project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+				tsconfigRootDir: import.meta.dirname
+			}
+			// other options...
+		}
+	}
+]);
+```
+
+### Project Structure
+
+```graphql
+/src
+├── app/                               # App-wide config, providers, router
+│   ├── router/
+│   │   ├── routes/                    # Route files (file-based routing)
+│   │   │   ├── index.tsx              # /
+│   │   │   ├── dashboard/
+│   │   │   │   ├── index.tsx          # e.g /dashboard
+│   │   │   │   ├── users.tsx          # e.g /dashboard/users
+│   │   │   └── settings/
+│   │   │       └── index.tsx          # /settings
+│   │   └── __root.tsx                 # Router context types
+│   ├── providers/                     # Global providers
+│   │   ├── query-provider.tsx         # QueryClientProvider
+│   │   └── theme-provider.tsx
+│   ├── main.tsx                       # Entry point
+│   └── routeTree.gen.ts               # Generated routeTree
+│
+├── modules/                           # Module-based domain modules
+│   ├── auth/
+│   │   ├── components/
+│   │   │   └── LoginForm.tsx
+│   │   ├── hooks/
+│   │   │   └── useLogin.ts
+│   │   ├── pages/
+│   │   │   └── LoginPage.tsx
+│   │   ├── api/                       # Module-specific API wrappers
+│   │   │   └── auth.api.ts
+│   │   └── index.ts
+│   └── ... (more modules)
+│
+├── api/                               # Auto-generated OpenAPI client
+│   ├── schemas.ts                     # Generated Zod/TS schemas (if using zod)
+│   ├── client.ts                      # API client instance (fetch/axios)
+│   ├── endpoints.ts                   # Wrapped endpoint functions
+│   └── types.d.ts                     # Generated types
+│
+├── components/                        # Reusable UI components (global)
+│   ├── ui/                            # Design system atoms/molecules
+│   │   └── Button.tsx
+│   └── form/                          # Form components
+│       └── Input.tsx
+│
+├── hooks/                             # Global cross-feature hooks
+│   └── useWindowSize.ts
+│
+├── lib/                               # Core libraries/utilities (non-React)
+│   ├── http.ts                        # fetch wrapper, interceptors
+│   ├── env.ts                         # environment variables handling
+│   ├── storage.ts                     # localStorage/session helpers
+│   └── logger.ts
+│
+├── services/                          # Side-effect services (analytics, auth)
+│   ├── analytics.service.ts
+│   └── auth.service.ts
+│
+├── styles/                            # Global styles, tokens
+│   ├── globals.css
+│   └── theme.css
+│
+└── assets/                            # Static assets
+    └── logo.svg
 ```
