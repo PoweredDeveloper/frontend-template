@@ -1,76 +1,15 @@
 # React TS Front-End template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Simple template for front-end development
 
-Currently, two official plugins are available:
+## About:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-	globalIgnores(["dist"]),
-	{
-		files: ["**/*.{ts,tsx}"],
-		extends: [
-			// Other configs...
-
-			// Remove tseslint.configs.recommended and replace with this
-			tseslint.configs.recommendedTypeChecked,
-			// Alternatively, use this for stricter rules
-			tseslint.configs.strictTypeChecked,
-			// Optionally, add this for stylistic rules
-			tseslint.configs.stylisticTypeChecked
-
-			// Other configs...
-		],
-		languageOptions: {
-			parserOptions: {
-				project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-				tsconfigRootDir: import.meta.dirname
-			}
-			// other options...
-		}
-	}
-]);
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default defineConfig([
-	globalIgnores(["dist"]),
-	{
-		files: ["**/*.{ts,tsx}"],
-		extends: [
-			// Other configs...
-			// Enable lint rules for React
-			reactX.configs["recommended-typescript"],
-			// Enable lint rules for React DOM
-			reactDom.configs.recommended
-		],
-		languageOptions: {
-			parserOptions: {
-				project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-				tsconfigRootDir: import.meta.dirname
-			}
-			// other options...
-		}
-	}
-]);
-```
+### Stack:
+- Base: [Node.js](https://nodejs.org/en), [TypeScript](https://www.typescriptlang.org)
+- Framework: [React](https://react.dev), [Vite](https://vite.dev)
+- Styling: [Headless UI](https://headlessui.com), [Tailwind CSS](https://tailwindcss.com)
+- Routing: [Tanstack Router](https://tanstack.com/router/latest)
+- API: [OpenAPI](https://openapi-ts.dev), [Tanstack Query](https://tanstack.com/query/latest)
 
 ### Project Structure
 
@@ -137,3 +76,18 @@ export default defineConfig([
 └── assets/                            # Static assets
     └── logo.svg
 ```
+
+## Development:
+1. Download [Docker](https://www.docker.com)
+2. Run
+```bash
+docker build -t frontend-template .
+```
+3. Then run
+```bash
+docker run -p 8080:80 frontend-template
+```
+4. Open application at [http://localhost:8080](http://localhost:8080)
+
+> [!IMPORTANT]
+> Restart machine to generate routes
