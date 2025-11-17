@@ -1,48 +1,40 @@
-# React TS Front-End template
+# ⚛️ React + TypeScript Front-End Template
 
-Simple template for front-end development
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-## About:
 
-### Stack:
-- Base: [Node.js](https://nodejs.org/en), [TypeScript](https://www.typescriptlang.org)
-- Framework: [React](https://react.dev), [Vite](https://vite.dev)
-- Styling: [Headless UI](https://headlessui.com), [Tailwind CSS](https://tailwindcss.com)
-- Routing: [Tanstack Router](https://tanstack.com/router/latest)
-- API: [OpenAPI](https://openapi-ts.dev), [Tanstack Query](https://tanstack.com/query/latest)
+A clean, modular template for modern front-end development using React, Vite, TypeScript, Tailwind, and TanStack tools. Designed for scalability, feature-based organization, and strong API typing via OpenAPI.
 
-### Project Structure
+## 🚀 Tech Stack
+- **Core**: [Node.js](https://nodejs.org/en), [TypeScript](https://www.typescriptlang.org)
+- **Framework**: [React](https://react.dev), [Vite](https://vite.dev)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com), [Headless UI](https://headlessui.com)
+- **Routing & State**: [Tanstack Router](https://tanstack.com/router/latest) (file-based routing), [Tanstack Query](https://tanstack.com/query/latest) (server state management)
+- **API**: [openapi-ts](https://openapi-ts.dev) (OpenAPI-generated client)
 
-```graphql
+## 📁 Project Structure
+
+```graph
 /src
 ├── app/                               # App-wide config, providers, router
 │   ├── router/
 │   │   ├── routes/                    # Route files (file-based routing)
 │   │   │   ├── index.tsx              # /
-│   │   │   ├── dashboard/
-│   │   │   │   ├── index.tsx          # e.g /dashboard
-│   │   │   │   ├── users.tsx          # e.g /dashboard/users
-│   │   │   └── settings/
-│   │   │       └── index.tsx          # /settings
+│   │   │   └── route/
+│   │   │       └── index.tsx          # e.g /route
 │   │   └── __root.tsx                 # Router context types
 │   ├── providers/                     # Global providers
-│   │   ├── query-provider.tsx         # QueryClientProvider
-│   │   └── theme-provider.tsx
 │   ├── main.tsx                       # Entry point
 │   └── routeTree.gen.ts               # Generated routeTree
 │
 ├── modules/                           # Module-based domain modules
-│   ├── auth/
-│   │   ├── components/
-│   │   │   └── LoginForm.tsx
-│   │   ├── hooks/
-│   │   │   └── useLogin.ts
-│   │   ├── pages/
-│   │   │   └── LoginPage.tsx
-│   │   ├── api/                       # Module-specific API wrappers
-│   │   │   └── auth.api.ts
-│   │   └── index.ts
-│   └── ... (more modules)
+│   └── auth/
+│       ├── components/
+│       ├── hooks/
+│       ├── pages/
+│       ├── api/                       # Module-specific API wrappers
+│       └── index.ts
 │
 ├── api/                               # Auto-generated OpenAPI client
 │   ├── schemas.ts                     # Generated Zod/TS schemas (if using zod)
@@ -52,42 +44,51 @@ Simple template for front-end development
 │
 ├── components/                        # Reusable UI components (global)
 │   ├── ui/                            # Design system atoms/molecules
-│   │   └── Button.tsx
 │   └── form/                          # Form components
-│       └── Input.tsx
 │
 ├── hooks/                             # Global cross-feature hooks
-│   └── useWindowSize.ts
-│
 ├── lib/                               # Core libraries/utilities (non-React)
 │   ├── http.ts                        # fetch wrapper, interceptors
 │   ├── env.ts                         # environment variables handling
 │   ├── storage.ts                     # localStorage/session helpers
 │   └── logger.ts
 │
-├── services/                          # Side-effect services (analytics, auth)
-│   ├── analytics.service.ts
-│   └── auth.service.ts
-│
 ├── styles/                            # Global styles, tokens
-│   ├── globals.css
-│   └── theme.css
+│   └── index.css
 │
 └── assets/                            # Static assets
-    └── logo.svg
 ```
 
-## Development:
+## ⚒️ Development:
+
+### 🐋 Using Docker
 1. Download [Docker](https://www.docker.com)
 2. Run
 ```bash
-docker build -t frontend-template .
+docker compose up
 ```
-3. Then run
+3. Open application at [http://localhost:8080](http://localhost:8080)
+
+### 🏁 Without Docker
+1. Install [Node.js](https://nodejs.org/en) and [pnpm](https://pnpm.io)
+2. Clone repository
 ```bash
-docker run -p 8080:80 frontend-template
+git clone https://github.com/PoweredDeveloper/frontend-template.git
+cd frontend-template
 ```
-4. Open application at [http://localhost:8080](http://localhost:8080)
+3. Install dependencies
+```bash
+pnpm install
+# or
+yarn
+```
+4. Start dev server
+```bash
+pnpm run dev --port 8080
+# or
+yarn dev --port 8080
+```
+5. Open app [http://localhost:8080](http://localhost:8080)
 
 > [!IMPORTANT]
-> Restart machine to generate routes
+> Route files are auto-generated. A system restart may be required after initial setup to ensure the router correctly refreshes its file mapping.
