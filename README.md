@@ -3,10 +3,10 @@
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-
 A clean, modular template for modern front-end development using React, Vite, TypeScript, Tailwind, and TanStack tools. Designed for scalability, feature-based organization, and strong API typing via OpenAPI.
 
 ## 🚀 Tech Stack
+
 - **Core**: [Node.js](https://nodejs.org/en), [TypeScript](https://www.typescriptlang.org)
 - **Framework**: [React](https://react.dev), [Vite](https://vite.dev)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com), [Headless UI](https://headlessui.com)
@@ -62,32 +62,42 @@ A clean, modular template for modern front-end development using React, Vite, Ty
 ## ⚒️ Development:
 
 ### 🐋 Using Docker
+
 1. Download [Docker](https://www.docker.com)
 2. Run
+
 ```bash
 docker compose up
 ```
+
 3. Open application at [http://localhost:8080](http://localhost:8080)
 
 ### 🏁 Without Docker
+
 1. Install [Node.js](https://nodejs.org/en) and [pnpm](https://pnpm.io)
 2. Clone repository
+
 ```bash
 git clone https://github.com/PoweredDeveloper/frontend-template.git
 cd frontend-template
 ```
+
 3. Install dependencies
+
 ```bash
 pnpm install
 # or
 yarn
 ```
+
 4. Start dev server
+
 ```bash
 pnpm run dev --port 8080
 # or
 yarn dev --port 8080
 ```
+
 5. Open app [http://localhost:8080](http://localhost:8080)
 
 > [!IMPORTANT]
