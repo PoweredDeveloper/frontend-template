@@ -102,3 +102,10 @@ yarn dev --port 8080
 
 > [!IMPORTANT]
 > Route files are auto-generated. A system restart may be required after initial setup to ensure the router correctly refreshes its file mapping.
+
+## TO-DO
+
+- [ ] Custom components
+  - [ ] General (button, inputs, etc.)
+  - [ ] Universal (pop-ups, labels, badges)
+- [ ] API

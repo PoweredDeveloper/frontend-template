@@ -84,7 +84,6 @@ const colorMap = {
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ children, variant = 'primary', size = 'md', color = 'primary', className, disabled, ...props }, ref) => {
   const base = 'font-semibold text-center rounded-lg cursor-pointer transition-colors duration-100 h-min w-min text-nowrap border'
-
   const disabledClasses = 'bg-secondary text-secondary-foreground border-secondary-foreground cursor-not-allowed'
 
   const styles = variant === 'primary' ? cn(colorMap[color].base, colorMap[color].hover, colorMap[color].active) : cn(colorMap[color][variant].base, colorMap[color][variant].hover, colorMap[color][variant].active)
