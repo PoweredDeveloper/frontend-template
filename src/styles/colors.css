@@ -45,7 +45,7 @@
   --success-foreground: white;
 
   --warning: rgb(245, 159, 10);
-  --warning-foreground: black;
+  --warning-foreground: white;
 
   --error: rgb(215, 58, 58);
   --error-foreground: white;
@@ -77,7 +77,7 @@
   --success-foreground: rgb(220, 255, 230);
 
   --warning: rgb(245, 159, 10);
-  --warning-foreground: rgb(30, 20, 5);
+  --warning-foreground: white;
 
   --error: rgb(215, 58, 58);
   --error-foreground: white;
