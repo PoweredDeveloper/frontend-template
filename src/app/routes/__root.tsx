@@ -1,4 +1,4 @@
-import ThemeToggle from '@/components/ui/ThemeToggle'
+import ThemeToggle from '@/components/ui/themeToggle'
 import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 
 const RootLayout = () => (
