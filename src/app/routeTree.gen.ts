@@ -9,55 +9,68 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root';
-import { Route as TableRouteImport } from './routes/table';
 import { Route as IndexRouteImport } from './routes/index';
+import { Route as PreviewsIndexRouteImport } from './routes/previews/index';
+import { Route as PreviewsTableRouteImport } from './routes/previews/table';
+import { Route as PreviewsButtonsRouteImport } from './routes/previews/buttons';
 
-const TableRoute = TableRouteImport.update({
-  id: '/table',
-  path: '/table',
-  getParentRoute: () => rootRouteImport,
-} as any);
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any);
+const PreviewsIndexRoute = PreviewsIndexRouteImport.update({
+  id: '/previews/',
+  path: '/previews/',
+  getParentRoute: () => rootRouteImport,
+} as any);
+const PreviewsTableRoute = PreviewsTableRouteImport.update({
+  id: '/previews/table',
+  path: '/previews/table',
+  getParentRoute: () => rootRouteImport,
+} as any);
+const PreviewsButtonsRoute = PreviewsButtonsRouteImport.update({
+  id: '/previews/buttons',
+  path: '/previews/buttons',
+  getParentRoute: () => rootRouteImport,
+} as any);
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute;
-  '/table': typeof TableRoute;
+  '/previews/buttons': typeof PreviewsButtonsRoute;
+  '/previews/table': typeof PreviewsTableRoute;
+  '/previews': typeof PreviewsIndexRoute;
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute;
-  '/table': typeof TableRoute;
+  '/previews/buttons': typeof PreviewsButtonsRoute;
+  '/previews/table': typeof PreviewsTableRoute;
+  '/previews': typeof PreviewsIndexRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
   '/': typeof IndexRoute;
-  '/table': typeof TableRoute;
+  '/previews/buttons': typeof PreviewsButtonsRoute;
+  '/previews/table': typeof PreviewsTableRoute;
+  '/previews/': typeof PreviewsIndexRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/' | '/table';
+  fullPaths: '/' | '/previews/buttons' | '/previews/table' | '/previews';
   fileRoutesByTo: FileRoutesByTo;
-  to: '/' | '/table';
-  id: '__root__' | '/' | '/table';
+  to: '/' | '/previews/buttons' | '/previews/table' | '/previews';
+  id: '__root__' | '/' | '/previews/buttons' | '/previews/table' | '/previews/';
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute;
-  TableRoute: typeof TableRoute;
+  PreviewsButtonsRoute: typeof PreviewsButtonsRoute;
+  PreviewsTableRoute: typeof PreviewsTableRoute;
+  PreviewsIndexRoute: typeof PreviewsIndexRoute;
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/table': {
-      id: '/table';
-      path: '/table';
-      fullPath: '/table';
-      preLoaderRoute: typeof TableRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
     '/': {
       id: '/';
       path: '/';
@@ -65,12 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
+    '/previews/': {
+      id: '/previews/';
+      path: '/previews';
+      fullPath: '/previews';
+      preLoaderRoute: typeof PreviewsIndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/previews/table': {
+      id: '/previews/table';
+      path: '/previews/table';
+      fullPath: '/previews/table';
+      preLoaderRoute: typeof PreviewsTableRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    '/previews/buttons': {
+      id: '/previews/buttons';
+      path: '/previews/buttons';
+      fullPath: '/previews/buttons';
+      preLoaderRoute: typeof PreviewsButtonsRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  TableRoute: TableRoute,
+  PreviewsButtonsRoute: PreviewsButtonsRoute,
+  PreviewsTableRoute: PreviewsTableRoute,
+  PreviewsIndexRoute: PreviewsIndexRoute,
 };
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

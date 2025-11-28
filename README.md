@@ -28,7 +28,7 @@ A clean, modular template for modern front-end development using React, Vite, Ty
 │   ├── main.tsx                       # Entry point
 │   └── routeTree.gen.ts               # Generated routeTree
 │
-├── modules/                           # Module-based domain modules
+├── pages/                             # Module-based domain modules
 │   └── auth/
 │       ├── components/
 │       ├── hooks/
