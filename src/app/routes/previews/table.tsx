@@ -1,4 +1,4 @@
-import TablePreviewPage from '@/pages/table-preview/TablePreviewPage'
+import TablePreviewPage from '@/components/pages/table-preview/TablePreviewPage'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/previews/table')({

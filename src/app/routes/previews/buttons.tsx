@@ -1,4 +1,4 @@
-import ButtonPreviewPage from '@/pages/button-preview/ButtonPreviewPage'
+import ButtonPreviewPage from '@/components/pages/button-preview/ButtonPreviewPage'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/previews/buttons')({
